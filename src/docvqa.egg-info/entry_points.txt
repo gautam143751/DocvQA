@@ -1,0 +1,2 @@
+[console_scripts]
+docvqa-cli = docvqa.cli.main:app

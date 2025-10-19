@@ -1,3 +1,23 @@
+Metadata-Version: 2.4
+Name: docvqa
+Version: 0.1.0
+Summary: CLI pipeline for extracting structured information from documents using DocVQA datasets, LLMs, or document extraction APIs.
+Author: DocvQA Team
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: typer[all]<1,>=0.9
+Requires-Dist: pydantic<3,>=2.6
+Requires-Dist: python-dotenv<2,>=1.0
+Requires-Dist: requests<3,>=2.31
+Requires-Dist: pyyaml<7,>=6.0.1
+Requires-Dist: google-cloud-firestore<3,>=2.14
+Requires-Dist: structlog>=24.1
+Provides-Extra: document-ai
+Requires-Dist: google-cloud-documentai<3,>=2.24; extra == "document-ai"
+Provides-Extra: dev
+Requires-Dist: pytest<9,>=8.0; extra == "dev"
+Requires-Dist: pytest-cov<5,>=4.1; extra == "dev"
+
 # DocVQA CLI
 
 CLI-driven pipeline for extracting structured information from DocVQA datasets using either large language models or specialized document understanding APIs, with results persisted to Google Cloud Firestore or local JSON artifacts.

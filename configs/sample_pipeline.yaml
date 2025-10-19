@@ -1,0 +1,21 @@
+# Sample configuration illustrating LLM extractor with local storage.
+dataset:
+  path: assets/samples
+  limit: 1
+extractor:
+  provider: llm
+  llm:
+    api_base: https://api.openai.com/v1/chat/completions
+    api_key: ${LLM_API_KEY}
+    model: gpt-4o-mini
+    temperature: 0.0
+storage:
+  provider: local_json
+  local_json:
+    output_dir: artifacts/results
+pipeline:
+  concurrency: 1
+  retry_attempts: 2
+  retry_backoff_seconds: 2.0
+logging:
+  level: INFO
