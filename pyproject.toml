@@ -1,0 +1,53 @@
+[project]
+name = "docvqa"
+version = "0.1.0"
+description = "CLI pipeline for extracting structured information from documents using DocVQA datasets, LLMs, or document extraction APIs."
+authors = [{name = "DocvQA Team"}]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "typer[all]>=0.9,<1",
+    "pydantic>=2.6,<3",
+    "python-dotenv>=1.0,<2",
+    "requests>=2.31,<3",
+    "pyyaml>=6.0.1,<7",
+    "google-cloud-firestore>=2.14,<3",
+    "structlog>=24.1",
+]
+
+[project.optional-dependencies]
+document-ai = [
+    "google-cloud-documentai>=2.24,<3",
+]
+dev = [
+    "pytest>=8.0,<9",
+    "pytest-cov>=4.1,<5",
+]
+
+[project.scripts]
+docvqa-cli = "docvqa.cli.main:app"
+
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "B", "UP", "ANN"]
+ignore = ["ANN101", "ANN102"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra"
+testpaths = ["tests"]
